@@ -17,7 +17,7 @@ import java.util.List;
 public class EmployeeCrudMvcApplication {
     private final CustomerDao customerDao;
 
-    @Bean @Profile("dev")
+    @Bean
     public ApplicationRunner runner() {
         return r -> {
             List.of(
