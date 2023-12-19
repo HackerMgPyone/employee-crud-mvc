@@ -21,11 +21,11 @@ public class EmployeeCrudMvcApplication {
     public ApplicationRunner runner() {
         return r -> {
             List.of(
-                    new Customer("John", "Doe", "john@gmail.com", "55-55-55", LocalDate.now()),
-                    new Customer("Albert", "Myo", "albert@gmail.com", "44-55-55", LocalDate.now()),
-                    new Customer("Annie", "Ni", "john@gmail.com", "55-22-44", LocalDate.now()),
-                    new Customer("Asaki", "Hugo", "asaki@gmail.com", "44-44-22", LocalDate.now()),
-                    new Customer("William", "San", "william@gmail.com", "22-22-22", LocalDate.now())
+                    new Customer("John", "Doe", "john@gmail.com", "55-55-55", LocalDate.of(2023,04,13)),
+                    new Customer("Albert", "Myo", "albert@gmail.com", "44-55-55", LocalDate.of(2023,04,13)),
+                    new Customer("Annie", "Ni", "john@gmail.com", "55-22-44", LocalDate.of(2023,04,13)),
+                    new Customer("Asaki", "Hugo", "asaki@gmail.com", "44-44-22", LocalDate.of(2023,04,13)),
+                    new Customer("William", "San", "william@gmail.com", "22-22-22", LocalDate.of(2023,04,13))
             ).forEach(this.customerDao::save);
         };
     }
