@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,5 +37,26 @@ public class CustomerController {
 
         customerService.createCustomer(customer);
         return "redirect:/home";
+    }
+    //http://localhost:8080/customer/delete?id=1
+    @GetMapping("/customer/delete")
+    public String deleteCustomer(@RequestParam("id") int id){
+        customerService.deleteCustomer(id);
+        return "redirect:/";
+    }
+    private int id;
+    @GetMapping("/customer/update/{id}")
+    public String updateCustomer(@PathVariable int id,Model model){
+        model.addAttribute("customer",customerService.findCustomerById(id));
+        this.id = id;
+        return "updateCustomer";
+    }
+    @PostMapping("/update/customer")
+    public String updateSaveCustomer(@Valid Customer customer,BindingResult result){
+        if (result.hasErrors()){
+            return "updateCustomer";
+        }
+        customerService.updateCustomer(id,customer);
+        return "redirect:/";
     }
 }

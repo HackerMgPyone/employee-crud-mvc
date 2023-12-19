@@ -19,6 +19,7 @@
             <th>Email</th>
             <th>PhoneNumber</th>
             <th>DateOfBirth</th>
+            <th>Action</th>
           </tr>
           </thead>
           <tbody>
@@ -29,6 +30,10 @@
             <td th:text="${cus.email}"></td>
             <td th:text="${cus.phoneNumber}"></td>
             <td th:text="${cus.dateOfBirth}"></td>
+            <td><a class="btn btn-outline-danger"
+                   th:href="@{'/customer/delete?id='+${cus.id}}">Delete</a></td>
+            <td><a class="btn btn-outline-success"
+                    th:href="@{'/customer/update/'+${cus.id}}">Update</a></td>
           </tr>
           </tbody>
         </table>
